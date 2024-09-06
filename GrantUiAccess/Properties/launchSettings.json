@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "GrantUiAccess": {
+      "commandName": "Project"
+    },
+    "ClassIsland": {
+      "commandName": "Executable",
+      "executablePath": "E:\\Coding\\ClassIsland\\ClassIsland\\bin\\Debug\\net8.0-windows\\ClassIsland.exe",
+      "commandLineArgs": "-epp E:\\Coding\\GrantUiAccess\\GrantUiAccess\\bin\\Debug\\net8.0-windows"
+    }
+  }
+}
