@@ -23,11 +23,16 @@ public class Plugin : PluginBase
 
     private void CurrentOnAppStarted(object? sender, EventArgs e)
     {
-        if (AppBase.Current.MainWindow?.Topmost == true)
+        if (AppBase.Current.MainWindow == null)
         {
-            AppBase.Current.MainWindow.Topmost = false;
-            AppBase.Current.MainWindow.Topmost = true;
+            return;
         }
+
+
+        if (AppBase.Current.MainWindow.Topmost != true) 
+            return;
+        AppBase.Current.MainWindow.Topmost = false;
+        AppBase.Current.MainWindow.Topmost = true;
     }
 
     [DllImport("UIAccessDLL.x64.dll", EntryPoint = "PrepareForUIAccess", CallingConvention = CallingConvention.Cdecl)]
