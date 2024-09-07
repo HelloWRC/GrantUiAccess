@@ -1,4 +1,5 @@
 
+using System.ComponentModel;
 using ClassIsland.Core.Abstractions;
 using ClassIsland.Core.Attributes;
 using ClassIsland.Core.Controls.CommonDialog;
@@ -16,7 +17,10 @@ public class Plugin : PluginBase
     {
         var hr = PrepareForUIAccess();
         Console.WriteLine(hr);
-        Marshal.ThrowExceptionForHR(hr);
+        if (hr != 0)
+        {
+            throw new Win32Exception(hr);
+        }
 
         AppBase.Current.AppStarted += CurrentOnAppStarted;
     }
