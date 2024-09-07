@@ -39,6 +39,6 @@ public class Plugin : PluginBase
         AppBase.Current.MainWindow.Topmost = true;
     }
 
-    [DllImport("UIAccessDLL.x64.dll", EntryPoint = "PrepareForUIAccess", CallingConvention = CallingConvention.Cdecl)]
+    [DllImport("uiaccess.dll", EntryPoint = "PrepareForUIAccess", CallingConvention = CallingConvention.Cdecl)]
     private static extern int PrepareForUIAccess();
 }

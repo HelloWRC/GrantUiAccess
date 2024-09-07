@@ -6,7 +6,7 @@ id: grantUiAccess
 name: UIAccess 提权
 description: 本插件可以为 ClassIsland 提升 UIAccess 令牌，使 ClassIsland 可以置顶到全屏 UWP 应用和系统界面上。
 entranceAssembly: "GrantUiAccess.dll"
-version: 1.0.0.0
+version: 1.0.0.1
 apiVersion: 1.5.0
 author: HelloWRC, Doubx690i
 url: https://github.com/HelloWRC/GrantUiAccess

@@ -13,6 +13,13 @@
 			<ExcludeAssets>runtime</ExcludeAssets>
 		</PackageReference>
 	</ItemGroup>
+	
+	<ItemGroup>
+	  <ProjectReference Include="..\uiaccess\uiaccess.vcxproj">
+	    <ReferenceOutputAssembly>True</ReferenceOutputAssembly>
+	    <CopyLocalSatelliteAssemblies>True</CopyLocalSatelliteAssemblies>
+	  </ProjectReference>
+	</ItemGroup>
 
 	<ItemGroup>
 		<None Update="manifest.yml">
@@ -22,9 +29,6 @@
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="icon.png">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Update="UIAccessDLL.x64.dll">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
