@@ -1,0 +1,57 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "*"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: microsoft/setup-msbuild@v2
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "8.x"
+          cache: true
+          cache-dependency-path: '**/*.csproj'
+
+      - name: Restore & Build
+        run: |
+          dotnet restore GrantUiAccess.sln
+          msbuild GrantUiAccess.sln /p:Configuration=Release /p:Platform=x64 /p:CreateCipx=true /m
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: cipx
+          path: GrantUiAccess/cipx/*
+          if-no-files-found: error
+
+  release:
+    needs: build
+    runs-on: windows-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: cipx
+          path: dist
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          body_path: dist/checksums.md
+          files: dist/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
