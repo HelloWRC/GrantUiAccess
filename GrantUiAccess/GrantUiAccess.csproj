@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
-    <UseWPF>false</UseWPF>
     <ImplicitUsings>enable</ImplicitUsings>
 	  <ClassIslandPluginSdkVersion>1.7.106.2-dev-v2</ClassIslandPluginSdkVersion>
   </PropertyGroup>
@@ -14,7 +13,7 @@
 		</PackageReference>
 	</ItemGroup>
 	
-	<ItemGroup>
+	<ItemGroup Condition="'$(VCTargetsPath)' != ''">
 	  <ProjectReference Include="..\uiaccess\uiaccess.vcxproj">
 	    <ReferenceOutputAssembly>True</ReferenceOutputAssembly>
 	    <CopyLocalSatelliteAssemblies>True</CopyLocalSatelliteAssemblies>
