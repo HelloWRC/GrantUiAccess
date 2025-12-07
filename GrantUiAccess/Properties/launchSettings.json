@@ -5,9 +5,12 @@
     },
     "ClassIsland": {
       "commandName": "Executable",
-      "executablePath": "E:\\Coding\\ClassIsland\\ClassIsland.Desktop\\bin\\Debug\\net8.0-windows7\\ClassIsland.Desktop.exe",
+      "executablePath": "E:\\Coding\\ClassIsland\\ClassIsland.Desktop\\bin\\Debug\\net8.0-windows10.0.19041.0\\ClassIsland.Desktop.exe",
       "commandLineArgs": "-epp $(TargetDir)",
-      "nativeDebugging": false
+      "environmentVariables": {
+        "ClassIsland_WaitDebuggers": "1"
+      },
+      "nativeDebugging": true
     }
   }
 }

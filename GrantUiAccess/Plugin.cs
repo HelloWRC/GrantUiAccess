@@ -5,6 +5,7 @@ using ClassIsland.Core.Attributes;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Runtime.InteropServices;
+using Avalonia.Threading;
 using ClassIsland.Core;
 
 namespace GrantUiAccess;
@@ -26,16 +27,19 @@ public class Plugin : PluginBase
 
     private void CurrentOnAppStarted(object? sender, EventArgs e)
     {
-        if (AppBase.Current.MainWindow == null)
+        _ = Dispatcher.UIThread.InvokeAsync(() =>
         {
-            return;
-        }
+            if (AppBase.Current.MainWindow == null)
+            {
+                return;
+            }
 
 
-        if (AppBase.Current.MainWindow.Topmost != true) 
-            return;
-        AppBase.Current.MainWindow.Topmost = false;
-        AppBase.Current.MainWindow.Topmost = true;
+            if (AppBase.Current.MainWindow.Topmost != true)
+                return;
+            AppBase.Current.MainWindow.Topmost = false;
+            AppBase.Current.MainWindow.Topmost = true;
+        });
     }
 
     [DllImport("uiaccess.dll", EntryPoint = "PrepareForUIAccess", CallingConvention = CallingConvention.Cdecl)]

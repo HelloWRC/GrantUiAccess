@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
-    <UseWPF>true</UseWPF>
+    <UseWPF>false</UseWPF>
     <ImplicitUsings>enable</ImplicitUsings>
-	  <ClassIslandPluginSdkVersion>1.7.105.1-dev-v2</ClassIslandPluginSdkVersion>
+	  <ClassIslandPluginSdkVersion>1.7.106.2-dev-v2</ClassIslandPluginSdkVersion>
   </PropertyGroup>
 	
 	<ItemGroup>
